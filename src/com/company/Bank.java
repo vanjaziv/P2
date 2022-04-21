@@ -1,9 +1,11 @@
 package com.company;
 
+import java.util.HashMap;
+
 public class Bank {
     public static void main(String[] args) {
-        Account a1 = new Account("Mein Konto", "AT...", "BAWBA");
-        Account a2 = new Account("Dein Konto", "AT...", "HZGR");
+        Account a1 = new Account("Dagobert", "AT...", "BAWBA");
+        Account a2 = new Account("Daisy", "AT...", "HZGR");
         Account a3 = new Account("Ihr Konto", "AT...", "ÖLJF");
 
         a1.add(1000);
@@ -21,5 +23,23 @@ public class Bank {
             System.out.println(accounts[i].getBalance());
         }
 
+        // wir möchten die accounts über den namen der bestitzerinnen zugreifen
+        // mapping von Dagobert Duck ---> Accoint
+        // Dagobert Duck ist ein Beispiel für ein Schlusselelement --> String
+        // Account ist ein Beispiel für einen Wert --> Account
+        // Achtung: wenn wir das so machen kann jede person maximal nur einen account haben
+        HashMap<String, Account> bank = new HashMap<>();
+        bank.put("Dagobert", a1);
+        bank.put("Daisy", a2);
+        bank.put("Donald", a3);
+        // gibt es einen wert hinter dem schlüssel dagobert?
+        System.out.println(bank.containsKey("Dagobert"));
+        // möchten den wert des schlüssel daisy erhalten (also ihr konto)
+        System.out.println(bank.get("Daisy"));
+        //einmal darüber iterieren --> schtung etwas anders
+        for(String owner: bank.keySet()){
+            System.out.println(owner);
+            System.out.println(bank.get(owner));
+        }
     }
 }
