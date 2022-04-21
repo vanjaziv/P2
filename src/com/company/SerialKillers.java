@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class SerialKillers {
@@ -28,9 +30,27 @@ public class SerialKillers {
         americanSerialKillers.add("Edmund Kemper");
         americanSerialKillers.add("Hannibal Lecter");
         serialNicknames.retainAll(americanSerialKillers);
-        System.out.println("----------------");
         for(String s : serialNicknames){
             System.out.println(s);
+            System.out.println("-----------------");
         }
+
+
+        // zurück zur hashmap
+        // in einer hashmap möchten wir alle opfer unserer serialkiller speichern
+        HashMap<String, ArrayList<String>> opfer = new HashMap<>();
+        // wenn ich hier und nicht in vorschleife die arraylist erzeuge
+        // dann habe ich ingesamt nur eine arraylist und würde jedem serienkiller die gleiche arraylist zuweisen
+        for(String crazyAmerican: americanSerialKillers){
+            ArrayList<String> o = new ArrayList<>();
+            o.add("Opfer 1");
+            o.add("Opfer 2");
+            o.add("Opfer 3");
+
+            opfer.put(crazyAmerican, o);
+        }
+        ArrayList<String> opfi = opfer.get("Ted Bundy");
+
+        opfi.add("Opfer 4");
     }
 }
